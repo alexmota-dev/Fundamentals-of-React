@@ -1,23 +1,44 @@
 import React from "react";
+import Header from "./Header";
 import Post from "./Post";
 
+const posts = [
+    {id:Math.random(),title:"Title#01", subtitle:"Sub#01", likes:21},
+    {id:Math.random(),title:"Title#02", subtitle:"Sub#02",likes:23},
+    {id:Math.random(),title:"Title#03", subtitle:"Sub#03", likes:18},
+    {id:Math.random(),title:"Title#04", subtitle:"Sub#04", likes:20},
+]
+
 function App(){
+
+    function handleRefresh(){
+        console.log("click");
+        posts.push({
+            id:Math.random(),
+            title: `Title#0${posts.length+1}`,
+            subtitle: `Sub#0${posts.length+1}`,
+            likes: 50,
+        })
+        console.log(posts);
+    }
     return (
         <React.Fragment>
-            <h1>Componente App</h1>
-            <h2>{Math.random()}</h2>
-            <Post
-                title="Titulo 01"
-                subtitle="Subtitulo 01"
-            />
-            <Post
-                title="Titulo 02"
-                subtitle="Subtitulo 02"
-            />
-            <Post
-                title="Alex"
-                subtitle="Dev do Ceará"
-            />
+            <Header title="Posts da Semana">
+                <button onClick={handleRefresh}>Atualizar</button>
+            </Header>
+
+            <hr/>
+
+            {posts.map((post)=>(
+                <Post
+                    key={post.id}
+                    likes={post.likes}
+                    post={{
+                        title:post.title,
+                        subtitle:post.subtitle,
+                    }}
+                />
+            ))}
         </React.Fragment>
     )
   }
