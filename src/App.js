@@ -1,24 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./Header";
 import Post from "./Post";
 
-const posts = [
-    {id:Math.random(),title:"Title#01", subtitle:"Sub#01", likes:21},
-    {id:Math.random(),title:"Title#02", subtitle:"Sub#02",likes:23},
-    {id:Math.random(),title:"Title#03", subtitle:"Sub#03", likes:18},
-    {id:Math.random(),title:"Title#04", subtitle:"Sub#04", likes:20},
-]
-
 function App(){
+    const [posts, setPosts] = useState([
+        {id:Math.random(),title:"Title#01", subtitle:"Sub#01", likes:21},
+        {id:Math.random(),title:"Title#02", subtitle:"Sub#02",likes:23},
+        {id:Math.random(),title:"Title#03", subtitle:"Sub#03", likes:18},
+        {id:Math.random(),title:"Title#04", subtitle:"Sub#04", likes:20},
+    ]);
 
     function handleRefresh(){
         console.log("click");
-        posts.push({
-            id:Math.random(),
-            title: `Title#0${posts.length+1}`,
-            subtitle: `Sub#0${posts.length+1}`,
-            likes: 50,
-        })
+        
+        setPosts([...posts,
+           {
+                id:Math.random(),
+                title: `Title#0${posts.length+1}`,
+                subtitle: `Sub#0${posts.length+1}`,
+                likes: 50,
+            },
+        ])
         console.log(posts);
     }
     return (
