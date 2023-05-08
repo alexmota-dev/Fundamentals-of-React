@@ -1,12 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types';
+import PostHeader from './PostHeader';
 
 const Post = (props) => {
   return (
     <div>
       <article>
-          {props.post.read ?<s>{props.post.title}</s> : <strong>{props.post.title}</strong>}
-          <button onClick={()=> props.onRemove(props.post.id)}>Remover</button>
+          <PostHeader
+            post={{
+              id: props.post.id,
+              title: props.post.title,
+              read: props.post.read,
+            }}
+            onRemove = {props.onRemove}
+          ></PostHeader>
           <br/>
           <small>{props.post.subtitle}</small>
           <br/>
@@ -24,6 +31,7 @@ Post.propTypes ={
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string.isRequired,
+    read: PropTypes.bool.isRequired,
   }).isRequired,
 };
 
