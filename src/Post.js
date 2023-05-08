@@ -5,7 +5,7 @@ const Post = (props) => {
   return (
     <div>
       <article>
-          <strong>{props.post.title}</strong>
+          {props.post.read ?<s>{props.post.title}</s> : <strong>{props.post.title}</strong>}
           <button onClick={()=> props.onRemove(props.post.id)}>Remover</button>
           <br/>
           <small>{props.post.subtitle}</small>
