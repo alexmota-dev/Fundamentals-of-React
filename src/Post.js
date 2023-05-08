@@ -10,7 +10,7 @@ const Post = (props) => {
           <br/>
           <small>{props.post.subtitle}</small>
           <br/>
-          Media: {props.likes / 2}
+          Media: {props.post.likes / 2}
           <br/>
       </article>
   </div>
@@ -18,9 +18,9 @@ const Post = (props) => {
 }
 
 Post.propTypes ={
-  likes: PropTypes.number.isRequired,
   onRemove: PropTypes.func.isRequired,
   post: PropTypes.shape({
+    likes: PropTypes.number.isRequired,
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string.isRequired,
