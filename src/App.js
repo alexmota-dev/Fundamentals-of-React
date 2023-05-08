@@ -4,10 +4,10 @@ import Post from "./Post";
 
 function App(){
     const [posts, setPosts] = useState([
-        {id:Math.random(),title:"Title#01", subtitle:"Sub#01", likes:21},
-        {id:Math.random(),title:"Title#02", subtitle:"Sub#02",likes:23},
-        {id:Math.random(),title:"Title#03", subtitle:"Sub#03", likes:18},
-        {id:Math.random(),title:"Title#04", subtitle:"Sub#04", likes:20},
+        {id:Math.random(),title:"Title#01", subtitle:"Sub#01", likes:21, read: true},
+        {id:Math.random(),title:"Title#02", subtitle:"Sub#02", likes:23, read: false},
+        {id:Math.random(),title:"Title#03", subtitle:"Sub#03", likes:18, read: true},
+        {id:Math.random(),title:"Title#04", subtitle:"Sub#04", likes:20, read: false},
     ]);
 
     function handleRefresh(){
@@ -35,10 +35,7 @@ function App(){
                 <Post
                     key={post.id}
                     likes={post.likes}
-                    post={{
-                        title:post.title,
-                        subtitle:post.subtitle,
-                    }}
+                    post={post}
                 />
             ))}
         </React.Fragment>
