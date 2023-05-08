@@ -23,6 +23,12 @@ function App(){
         ])
         console.log(posts);
     }
+
+    function handleRemove(postId){
+        setPosts((prevState) => (
+            prevState.filter(post => post.id !== postId)
+        ))
+    }
     return (
         <React.Fragment>
             <Header title="Posts da Semana">
@@ -36,6 +42,7 @@ function App(){
                     key={post.id}
                     likes={post.likes}
                     post={post}
+                    onRemove={handleRemove}
                 />
             ))}
         </React.Fragment>
