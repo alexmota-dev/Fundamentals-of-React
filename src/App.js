@@ -30,12 +30,12 @@ function App(){
             prevState.filter(post => post.id !== postId)
         ))
     }
+
     return (
         //precisa colocar o ThemeProvider aqui.
-        <>
+        <ThemeProvider>
             <Header
-                title="Posts da Semana"
-                theme = {theme}>
+                title="Posts da Semana">
                 <button onClick={handleRefresh}>
                     Atualizar
                 </button>
@@ -46,14 +46,12 @@ function App(){
             {posts.map((post)=>(
                 <Post
                     key={post.id}
-                    likes={post.likes}
                     post={post}
                     onRemove={handleRemove}
-                    theme ={theme}
                 />
             ))}
-        <>
-    )
+        </ThemeProvider>
+    );
   }
 
   export default App;
