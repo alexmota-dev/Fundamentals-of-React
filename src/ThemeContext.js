@@ -2,8 +2,8 @@ import React, { useState, createContext} from "react";
 
 export const ThemeContext = createContext('dark');
 
-
-const ThemeProvider=(props)=>{
+//porque export default da erro aqui ?
+export function ThemeProvider(props){
     const [theme, setTheme] = useState('dark');
 
     function handleToggleTheme(){
@@ -12,14 +12,14 @@ const ThemeProvider=(props)=>{
         : 'dark');
     }
 
-    return <ThemeContext.Provider
-    value = {{
-        theme,
-        onToggleTheme: handleToggleTheme
-    }}
-    >
-        {props.children}
-    </ThemeContext.Provider>
+    return (
+        <ThemeContext.Provider
+            value = {{
+                theme,
+                onToggleTheme: handleToggleTheme
+            }}
+        >
+            {props.children}
+        </ThemeContext.Provider>
+    );
 }
-
-export default ThemeProvider;
