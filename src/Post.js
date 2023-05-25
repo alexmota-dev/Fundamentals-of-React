@@ -1,11 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 import PostHeader from './PostHeader';
+import styles from "./Post.scss"
 
 const Post = (props) => {
   return (
-    <div>
-      <article>
+      <article
+        className={
+          props.post.removed
+            ? styles.postDeleted
+            : styles.post
+          }
+        >
           <PostHeader
             post={{
               id: props.post.id,
@@ -20,7 +26,6 @@ const Post = (props) => {
           Media: {props.post.likes / 2}
           <br/>
       </article>
-  </div>
   )
 }
 
@@ -32,6 +37,7 @@ Post.propTypes ={
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string.isRequired,
     read: PropTypes.bool.isRequired,
+    removed: PropTypes.bool.isRequired,
   }).isRequired,
 };
 
